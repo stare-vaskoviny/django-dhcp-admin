@@ -21,6 +21,6 @@ class MyPCAdminForm(forms.ModelForm):
         for l in mac:
             if l in string.hexdigits:
                 cleaned += l
-        if len(cleaned) != 16:
+        if len(cleaned) != 12:
             raise ValidationError(_('incorect mac address'))
         return cleaned

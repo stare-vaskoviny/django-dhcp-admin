@@ -3,7 +3,7 @@ from command_runner import runCommand
             
 def pcPostSaved(sender, instance, created, **kwargs):
     formattedMAC = []
-    for i in range(8):
+    for i in range(0, len(instance.mac), 2):
         formattedMAC.append(instance.mac[i:i+2])
     runCommand('dhcpdManager.py del %s && dhcpdManager.py add %s %s %s' %\
                 (instance.name, instance.name, 

@@ -12,7 +12,7 @@ class PC(models.Model):
         verbose_name_plural = _('pcs')
         unique_together = (('mac', 'ip'),)
     
-    mac = models.CharField(verbose_name=_('macAddress'), max_length=16, 
+    mac = models.TextField(verbose_name=_('macAddress'), max_length=12, 
                            unique=True, primary_key=True)
     name = models.CharField(verbose_name=_('name'), max_length=64)
     ip = models.IPAddressField(verbose_name=_('ip address'), unique=True)
