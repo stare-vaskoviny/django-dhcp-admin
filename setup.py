@@ -11,7 +11,7 @@ if os.path.exists(README_PATH):
 else:
     long_description = description
 
-setup(name='django-sys-service-admin',
+setup(name='django-dhcp-admin',
     version='0.1',
     description=description,
     license='BSD',
