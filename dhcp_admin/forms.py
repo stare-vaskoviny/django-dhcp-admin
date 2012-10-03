@@ -8,12 +8,16 @@ import string
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 from django.core.exceptions import ValidationError
+from django.forms.widgets import Textarea
 
 from .models import PC
-
+        
 class MyPCAdminForm(forms.ModelForm):
+        
     class Meta:
         model = PC
+        
+    mac = forms.CharField(widget=Textarea)
         
     def clean_mac(self):
         mac = self.cleaned_data['mac']
