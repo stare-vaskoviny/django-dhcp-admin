@@ -24,11 +24,13 @@ class PC(models.Model):
         return runCommand('ping -c 1 -W 1 %s' % self.ip) == 0
     
     def start(self):
+        runCommand('wakeonlan -i %s.255 %s' % (NET_PART, self.formattedMAC()))
+        
+    def formattedMAC(self):
         formattedMAC = []
         for i in range(0, len(self.mac), 2):
             formattedMAC.append(self.mac[i:i+2].lower())
-        runCommand('wakeonlan -i %s.255 %s' %\
-                   (NET_PART, ':'.join(formattedMAC)))
+        return ':'.join(formattedMAC)
     
     def stop(self):
         runCommand()

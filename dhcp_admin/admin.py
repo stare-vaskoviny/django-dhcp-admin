@@ -12,8 +12,8 @@ def start_pcs(modeladmin, request, queryset):
 start_pcs.short_description = _('Start selected machines')
     
 class PCAdmin(admin.ModelAdmin):
-    list_display = ('name', 'ip')
-    search_fields = ['name', 'ip', 'mac']
+    list_display = ('name', 'ip', 'formattedMAC')
+    search_fields = ('name', 'ip', 'mac')
     form = MyPCAdminForm
     actions = [start_pcs]
 
