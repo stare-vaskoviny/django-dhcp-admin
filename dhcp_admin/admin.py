@@ -10,7 +10,8 @@ def start_pcs(modeladmin, request, queryset):
         m.start()
     messages.add_message(request, messages.INFO, _('Wakeup signals sent.'))
 start_pcs.short_description = _('Start selected machines')
-    
+
+
 class PCAdmin(admin.ModelAdmin):
     list_display = ('name', 'ip', 'formattedMAC')
     search_fields = ('name', 'ip', 'mac')

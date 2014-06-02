@@ -5,8 +5,9 @@ import string
 
 from .models import PC, NET_PART
 
+
 class AddMacView(View):
-    
+
     def get(self, request, *args, **kwargs):
         mac, name = kwargs['mac'], kwargs['name'].lower()
         cleaned = ''
@@ -16,11 +17,10 @@ class AddMacView(View):
         if not PC.objects.filter(mac=mac).exists():
             for i in range(10, 249):
                 try:
-                    p = PC(name=name, mac=cleaned, 
+                    p = PC(name=name, mac=cleaned,
                            ip='%s.%i' % (NET_PART, i))
                     p.save()
                     return HttpResponse('OK')
                 except Exception:
                     pass
         return HttpResponseServerError('FULL')
-        
